@@ -36,9 +36,8 @@ function HomeScreen(props) {
   return (
     <>
       {category && <h2>{category}</h2>}
-
-      <ul className="filter">
-        <li>
+<div className="filter">
+      <div>
           <form onSubmit={submitHandler}>
             <input
               name="searchKeyword"
@@ -46,16 +45,16 @@ function HomeScreen(props) {
             />
             <button type="submit">Search</button>
           </form>
-        </li>
-        <li>
+        </div>
+        <div>
           Sort By{' '}
           <select name="sortOrder" onChange={sortHandler}>
             <option value="">Newest</option>
             <option value="lowest">Lowest</option>
             <option value="highest">Highest</option>
           </select>
-        </li>
-        <li>
+        </div>
+        <div>
           Category{' '}
           <select name="category" onChange={categoryHandler}>
             <option value="">All</option>
@@ -65,8 +64,8 @@ function HomeScreen(props) {
             <option value="Wine">Chardonnay</option>
             <option value="Wine">Sparkling wine</option>
           </select>
-        </li>
-      </ul>
+        </div>
+</div>
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
