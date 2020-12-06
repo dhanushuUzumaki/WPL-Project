@@ -4,6 +4,23 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import Rating from '../components/Rating';
+import {Pagination} from 'react-bootstrap';
+
+let active = 2;
+let items = [];
+for (let number = 1; number <= 5; number++) {
+  items.push(
+    <Pagination.Item key={number} active={number === active}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+
+const PaginationBasic = () => (
+  <div>
+    <Pagination size="lg">{items}</Pagination>    
+  </div>
+);
 
 function HomeScreen(props) {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -35,9 +52,9 @@ function HomeScreen(props) {
 
   return (
     <>
-      {category && <h2>{category}</h2>}
-<div className="filter">
-      <div>
+      {category && <h2>{category}</h2>}      
+      <div className="filter">
+        <div>
           <form onSubmit={submitHandler}>
             <input
               name="searchKeyword"
@@ -98,6 +115,7 @@ function HomeScreen(props) {
           ))}
         </ul>
       )}
+      <PaginationBasic />
     </>
   );
 }

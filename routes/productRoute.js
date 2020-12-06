@@ -45,6 +45,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find({...category, ...searchKeyword, disabled: false}).sort(
         sortOrder
     ).skip(page * limit).limit(limit);
+    console.log(products)
     res.send(products);
 });
 
