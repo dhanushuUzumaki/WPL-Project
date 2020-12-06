@@ -238,7 +238,7 @@ a > .rating > span:last-child {
   border: 0.1rem #404040 solid;
 }
 .button.primary {
-  background-color: #f0c040;
+background-color: #cc99ff;
 }
 .button.secondary {
   background-color: #f0f0f0;
