@@ -29,7 +29,7 @@ function SigninScreen(props) {
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>Sign-In</h2>
+          <h2><center>Sign-In</center></h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -48,13 +48,13 @@ function SigninScreen(props) {
           </input>
         </li>
         <li>
-          <button type="submit" className="button primary">Signin</button>
+          <button type="submit" className="button primary">Sign-in</button>
         </li>
         <li>
-          New to our bistro?Have an account for free online orders!
+          New to our bistro? Click below!
         </li>
         <li>
-          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your Bistro account</Link>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your Bistro account for free!</Link>
         </li>
       </ul>
     </form>

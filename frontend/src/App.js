@@ -26,7 +26,7 @@ function App() {
       <div className="grid-container">
         <header className="header">
           <div className="brand">
-            <Link to="/">amazona</Link>
+            <Link to="/">DAS BISTRO WINE BAR</Link>
           </div>
           <div className="header-links">
             <Link to="/cart">Cart</Link>
@@ -65,7 +65,8 @@ function App() {
             <Route path="/" exact={true} component={HomeScreen} />
           </div>
         </main>
-        <footer className="footer">All right reserved.</footer>
+        <footer className="footer">
+        <p>Contact us at @dasbistro@gmail.com  Address:7575 Frankford Road, Estates on Frankford, 75252 Dallas Texas</p></footer>
       </div>
     </BrowserRouter>
   );

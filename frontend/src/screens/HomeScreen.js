@@ -60,7 +60,10 @@ function HomeScreen(props) {
           <select name="category" onChange={categoryHandler}>
             <option value="">All</option>
             <option value="Wine">Wine</option>
-            <option value="Other">Ohter</option>
+            <option value="Wine">Red Wine</option>
+            <option value="Wine">White Wine</option>
+            <option value="Wine">Chardonnay</option>
+            <option value="Wine">Sparkling wine</option>
           </select>
         </li>
       </ul>
