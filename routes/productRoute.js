@@ -26,7 +26,7 @@ router.get('/count', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const page = req.query.page - 1 || 0;
-    const limit = req.query.limit - 0 || 10;
+    const limit = req.query.limit - 0 || 3;
     const category = req.query.category ? {category: req.query.category} : {};
     const searchKeyword = req.query.searchKeyword
         ? {
@@ -66,7 +66,7 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
         product.price = req.body.price || product.price;
         product.image = req.body.image || product.image;
         product.category = req.body.category || product.category;
-        product.countInStock = req.body.itemStock || product.itemStock;
+        product.countInStock = req.body.countInStock || product.countInStock;
         product.description = req.body.description || product.description;
         const updatedProduct = await product.save();
         if (updatedProduct) {
@@ -99,7 +99,7 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
         price: req.body.price,
         image: req.body.image,
         category: req.body.category,
-        countInStock: req.body.itemStock,
+        countInStock: req.body.countInStock,
         description: req.body.description,
     });
     const newProduct = await product.save();
