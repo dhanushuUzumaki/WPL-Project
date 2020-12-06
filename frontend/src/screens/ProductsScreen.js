@@ -7,6 +7,8 @@ import {
   deleteProdcut,
 } from '../actions/productActions';
 
+import {Pagination} from 'react-bootstrap';
+
 function ProductsScreen(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState('');
@@ -19,6 +21,7 @@ function ProductsScreen(props) {
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const productList = useSelector((state) => state.productList);
+  const [active, setActive] = useState(1);
   const { loading, products, error } = productList;
 
   const productSave = useSelector((state) => state.productSave);
@@ -40,11 +43,11 @@ function ProductsScreen(props) {
     if (successSave) {
       setModalVisible(false);
     }
-    dispatch(listProducts());
+    dispatch(listProducts('', '', '', active));
     return () => {
       //
     };
-  }, [successSave, successDelete]);
+  }, [successSave, successDelete, active]);
 
   const openModal = (product) => {
     setModalVisible(true);
@@ -95,6 +98,27 @@ function ProductsScreen(props) {
         setUploading(false);
       });
   };
+
+  const setActiveHandler = (page) => {
+    console.log(page);
+    setActive(page);
+  }
+
+  const PaginationBasic = (activePage) => {
+    console.log('rendering')
+    let items = [];
+    for (let number = 1; number <= 3; number++) {
+      items.push(
+        <Pagination.Item key={number} active={number === activePage} onClick={() => setActiveHandler(number)}>
+          {number}
+        </Pagination.Item>,
+      );
+    }
+    return (
+    <div>
+      <Pagination size="lg">{items}</Pagination>
+    </div>
+  )};
   return (
     <div className="content content-margined">
       <div className="product-header">
@@ -240,7 +264,8 @@ function ProductsScreen(props) {
             ))}
           </tbody>
         </table>
-      </div>
+        {PaginationBasic(active)}
+      </div>      
     </div>
   );
 }

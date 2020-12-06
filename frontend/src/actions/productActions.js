@@ -21,7 +21,8 @@ import Axios from 'axios';
 const listProducts = (
   category = '',
   searchKeyword = '',
-  sortOrder = ''
+  sortOrder = '',
+  page = 1
 ) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -31,7 +32,9 @@ const listProducts = (
         '&searchKeyword=' +
         searchKeyword +
         '&sortOrder=' +
-        sortOrder
+        sortOrder +
+        '&page=' +
+        page
     );
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
