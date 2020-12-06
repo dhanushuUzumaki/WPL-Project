@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createOrder, detailsOrder, payOrder } from '../actions/orderActions';
-import PaypalButton from '../components/PaypalButton';
-function OrderScreen(props) {
+function Order(props) {
 
   const orderPay = useSelector(state => state.orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
@@ -25,28 +24,14 @@ function OrderScreen(props) {
   const orderDetails = useSelector(state => state.orderDetails);
   const { loading, order, error } = orderDetails;
 
+
+  let itemPrice = 0;
+
   return loading ? <div>Loading ...</div> : error ? <div>{error}</div> :
 
     <div>
       <div className="placeorder">
-        <div className="placeorder-info">
-          <div>
-            <h3>
-              Shipping
-          </h3>
-            <div>
-              {order.isDelivered ? "Delivered at " + order.deliveredAt : "Not Delivered."}
-            </div>
-          </div>
-          <div>
-            <h3>Payment</h3>
-            <div>
-              Payment Method: "Paypal"
-            </div>
-            <div>
-              {order.isPaid ? "Paid at " + order.paidAt : "Not Paid."}
-            </div>
-          </div>
+        <div className="placeorder-info">          
           <div>
             <ul className="cart-list-container">
               <li>
@@ -64,7 +49,10 @@ function OrderScreen(props) {
           </div>
                   :
                   order.orderItems.map(item =>
-                    <li key={item._id}>
+                    {
+                      itemPrice += parseInt(item.price);
+                      return (
+                        <li key={item._id}>
                       <div className="cart-image">
                         <img src={item.image} alt="product" />
                       </div>
@@ -83,6 +71,8 @@ function OrderScreen(props) {
                         ${item.price}
                       </div>
                     </li>
+                      )
+                    }
                   )
               }
             </ul>
@@ -92,28 +82,20 @@ function OrderScreen(props) {
         </div>
         <div className="placeorder-action">
           <ul>
-            <li className="placeorder-actions-payment">
-              {loadingPay && <div>Finishing Payment...</div>}
-              {!order.isPaid &&
-                <PaypalButton
-                  amount={order.totalPrice}
-                  onSuccess={handleSuccessPayment} />
-              }
-            </li>
             <li>
               <h3>Order Summary</h3>
             </li>
             <li>
               <div>Items</div>
-              <div>${order.itemsPrice}</div>
+              <div>${itemPrice}</div>
             </li>
             <li>
               <div>Shipping</div>
-              <div>${order.shippingPrice}</div>
+              <div>${itemPrice > 100 ? 0 : 10}</div>
             </li>
             <li>
               <div>Tax</div>
-              <div>${order.taxPrice}</div>
+              <div>${itemPrice * 0.15}</div>
             </li>
             <li>
               <div>Order Total</div>
@@ -130,4 +112,4 @@ function OrderScreen(props) {
 
 }
 
-export default OrderScreen;
+export default Order;

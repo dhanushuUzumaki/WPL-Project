@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-function CartScreen(props) {
+function Cart(props) {
 
   const cart = useSelector(state => state.cart);
 
@@ -22,7 +22,7 @@ function CartScreen(props) {
   }, []);
 
   const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+    props.history.push("/signin?redirect=placeorder");
   }
 
   return <div className="cart">
@@ -90,4 +90,4 @@ function CartScreen(props) {
   </div>
 }
 
-export default CartScreen;
+export default Cart;

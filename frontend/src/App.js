@@ -3,19 +3,17 @@ import {useDispatch} from 'react-redux';
 import { listMyOrders } from './actions/orderActions';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import CartScreen from './screens/CartScreen';
-import SigninScreen from './screens/SigninScreen';
+import Home from './components/Home';
+import Product from './components/Product';
+import Cart from './components/Cart';
+import Signin from './components/Signin';
 import { useSelector } from 'react-redux';
-import RegisterScreen from './screens/RegisterScreen';
-import ProductsScreen from './screens/ProductsScreen';
-import ShippingScreen from './screens/ShippingScreen';
-import PaymentScreen from './screens/PaymentScreen';
-import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import OrderScreen from './screens/OrderScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import OrdersScreen from './screens/OrdersScreen';
+import Register from './components/Register';
+import Products from './components/Products';
+import PlaceOrder from './components/PlaceOrder';
+import Order from './components/OrderScreen';
+import Profile from './components/Profile';
+import Orders from './components/Orders';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -52,19 +50,17 @@ function App() {
         </header>      
         <main className="main">
           <div className="content">
-            <Route path="/orders" component={OrdersScreen} />
-            <Route path="/profile" component={ProfileScreen} onEnter={() => dispatch(listMyOrders())}/>
-            <Route path="/order/:id" component={OrderScreen} />
-            <Route path="/products" component={ProductsScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
-            <Route path="/payment" component={PaymentScreen} />
-            <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/signin" component={SigninScreen} />
-            <Route path="/register" component={RegisterScreen} />
-            <Route path="/product/:id" component={ProductScreen} />
-            <Route path="/cart/:id?" component={CartScreen} />
-            <Route path="/category/:id" component={HomeScreen} />
-            <Route path="/" exact={true} component={HomeScreen} />
+            <Route path="/orders" component={Orders} />
+            <Route path="/profile" component={Profile} onEnter={() => dispatch(listMyOrders())}/>
+            <Route path="/order/:id" component={Order} />
+            <Route path="/products" component={Products} />
+            <Route path="/placeorder" component={PlaceOrder} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/register" component={Register} />
+            <Route path="/product/:id" component={Product} />
+            <Route path="/cart/:id?" component={Cart} />
+            <Route path="/category/:id" component={Home} />
+            <Route path="/" exact={true} component={Home} />
           </div>
         </main>
         <footer className="footer">

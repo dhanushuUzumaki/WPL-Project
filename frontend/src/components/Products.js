@@ -9,7 +9,7 @@ import {
 
 import {Pagination} from 'react-bootstrap';
 
-function ProductsScreen(props) {
+function Products(props) {
   const [modalVisible, setModalVisible] = useState(false);
   const [id, setId] = useState('');
   const [name, setName] = useState('');
@@ -269,4 +269,4 @@ function ProductsScreen(props) {
     </div>
   );
 }
-export default ProductsScreen;
+export default Products;

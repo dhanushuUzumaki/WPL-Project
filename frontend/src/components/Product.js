@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct, saveProductReview } from '../actions/productActions';
-import Rating from '../components/Rating';
+import Rating from './Rating';
 import { PRODUCT_REVIEW_SAVE_RESET } from '../constants/productConstants';
 
-function ProductScreen(props) {
+function Product(props) {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -178,4 +178,4 @@ function ProductScreen(props) {
     </div>
   );
 }
-export default ProductScreen;
+export default Product;

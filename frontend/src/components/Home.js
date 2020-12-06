@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
-import Rating from '../components/Rating';
+import Rating from './Rating';
 import { Pagination } from 'react-bootstrap';
 
 
 
-function HomeScreen(props) {
+function Home(props) {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [sortOrder, setSortOrder] = useState('');
   const [category, setCategory] = useState('');
@@ -129,4 +129,4 @@ function HomeScreen(props) {
     </>
   );
 }
-export default HomeScreen;
+export default Home;

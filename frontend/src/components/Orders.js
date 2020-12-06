@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { listOrders, deleteOrder } from '../actions/orderActions';
 
-function OrdersScreen(props) {
+function Orders(props) {
   const orderList = useSelector(state => state.orderList);
   const { loading, orders, error } = orderList;
 
@@ -55,9 +55,8 @@ function OrdersScreen(props) {
               <td>No</td>
               <td>{order.deliveredAt}</td>
               <td>
-                <Link to={"/order/" + order._id} className="button secondary" >Details</Link>
-                {' '}
-                <button type="button" onClick={() => deleteHandler(order)} className="button secondary">Delete</button>
+                <Link to={"/order/" + order._id} >Details</Link> 
+                {' '}                               
               </td>
             </tr>))}
           </tbody>
@@ -66,4 +65,4 @@ function OrdersScreen(props) {
       </div>
     </div>
 }
-export default OrdersScreen;
+export default Orders;

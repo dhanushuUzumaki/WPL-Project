@@ -4,7 +4,7 @@ import { logout, update } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { useDispatch, useSelector } from 'react-redux';
 
-function ProfileScreen(props) {
+function Profile(props) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -118,4 +118,4 @@ function ProfileScreen(props) {
   </div>
 }
 
-export default ProfileScreen;
+export default Profile;
